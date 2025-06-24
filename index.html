@@ -1016,6 +1016,55 @@
             width: 0%;
             transition: width 0.1s ease;
         }
+
+        /* Chatbot Styles */
+        #chatbot-toggle-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--accent-gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: transform 0.2s ease-in-out;
+        }
+        #chatbot-toggle-btn:hover { transform: scale(1.1); }
+        #chatbot-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 370px;
+            height: 550px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            transition: opacity 0.3s, transform 0.3s;
+            transform-origin: bottom right;
+            border: 1px solid var(--border-subtle);
+        }
+        #chatbot-container.hidden {
+            opacity: 0;
+            transform: scale(0);
+            pointer-events: none;
+        }
+        #chatbot-container iframe { width: 100%; height: 100%; }
+        @media (max-width: 480px) {
+            #chatbot-container {
+                width: calc(100vw - 40px);
+                height: 70vh;
+                bottom: 90px;
+                right: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1498,6 +1547,13 @@
         </div>
     </footer>
 
+    <div id="chatbot-toggle-btn">
+        <i class="fas fa-robot"></i>
+    </div>
+
+    <div id="chatbot-container" class="hidden">
+        <iframe src="https://portfolio-chatbot-i4k4a3reba-du.a.run.app" frameborder="0"></iframe>
+    </div>
     <script>
         // Scroll Progress Indicator
         function updateScrollProgress() {
@@ -1590,6 +1646,13 @@
             
             // Activate hero animations
             document.querySelector('.hero').classList.add('visible');
+        });
+
+        // 챗봇 스크립트
+        const toggleBtn = document.getElementById('chatbot-toggle-btn');
+        const chatbotContainer = document.getElementById('chatbot-container');
+        toggleBtn.addEventListener('click', () => {
+            chatbotContainer.classList.toggle('hidden');
         });
 
     </script>
