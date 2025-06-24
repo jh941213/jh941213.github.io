@@ -501,6 +501,18 @@
             backdrop-filter: var(--blur-glass);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-card .project-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card .project-description {
+            flex-grow: 1;
         }
 
         .project-card::before {
@@ -541,6 +553,7 @@
             color: var(--text-primary);
             font-weight: 700;
             margin-bottom: 0.5rem;
+            margin-right: 1rem;
         }
 
         .project-duration {
@@ -596,6 +609,10 @@
             position: relative;
             margin-bottom: 3rem;
             width: 50%;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
         }
 
         .timeline-item:nth-child(odd) {
@@ -705,6 +722,10 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        .award-item:last-child {
+            margin-bottom: 0;
+        }
+
         .award-item:hover {
             background: rgba(255, 255, 255, 0.05);
             transform: translateX(4px);
@@ -720,6 +741,7 @@
         .award-item span {
             color: var(--text-tertiary);
             font-size: 0.875rem;
+            display: block;
         }
 
         /* Contact Section */
@@ -806,9 +828,13 @@
                 gap: 3rem;
                 text-align: center;
             }
+            .about-image {
+                margin: 0 auto;
+            }
 
             .timeline::before {
                 left: 2rem;
+                transform: translateX(0);
             }
 
             .timeline-item {
@@ -820,6 +846,11 @@
 
             .timeline-item::before {
                 left: 1.25rem !important;
+                transform: translateX(0);
+            }
+            
+            .timeline-item:nth-child(even) {
+                padding-left: 4rem !important;
             }
 
             .timeline-content {
@@ -951,6 +982,7 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#experience">Experience</a></li>
+                <li><a href="#awards">Awards</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="hamburger">
@@ -1052,10 +1084,10 @@
                             <span class="skill-tag">Keras</span>
                             <span class="skill-tag">TensorFlow</span>
                             <span class="skill-tag">HuggingFace</span>
-                            <span class="skill-tag">NumPy</span>
-                            <span class="skill-tag">Pandas</span>
-                            <span class="skill-tag">Scikit-learn</span>
-                            <span class="skill-tag">OpenCV</span>
+                            <span class="skill-tag">LangChain</span>
+                            <span class="skill-tag">RAG</span>
+                            <span class="skill-tag">Fine-tuning</span>
+                            <span class="skill-tag">Agent</span>
                         </div>
                     </div>
                     <div class="skill-card">
@@ -1071,45 +1103,38 @@
                     <div class="skill-card">
                         <h3>🌐 Web & Backend</h3>
                         <div class="skill-tags">
-                            <span class="skill-tag">Flask</span>
+                            <span class="skill-tag">Spring</span>
                             <span class="skill-tag">FastAPI</span>
+                            <span class="skill-tag">Flask</span>
                             <span class="skill-tag">Streamlit</span>
                             <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">Spring</span>
                         </div>
                     </div>
                     <div class="skill-card">
-                        <h3>☁️ Cloud & Database</h3>
+                        <h3>☁️ Cloud, DB & Infra</h3>
                         <div class="skill-tags">
                             <span class="skill-tag">AWS</span>
                             <span class="skill-tag">Azure</span>
-                            <span class="skill-tag">MySQL</span>
-                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">Docker</span>
                             <span class="skill-tag">RabbitMQ</span>
                             <span class="skill-tag">Vertica</span>
+                            <span class="skill-tag">MySQL</span>
                         </div>
                     </div>
                     <div class="skill-card">
-                        <h3>🔧 Embedded System</h3>
+                        <h3>🔧 Embedded & Etc.</h3>
                         <div class="skill-tags">
-                            <span class="skill-tag">Arduino</span>
-                            <span class="skill-tag">Raspberry Pi</span>
                             <span class="skill-tag">TinyML</span>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <h3>🛠️ Collaboration & Tools</h3>
-                        <div class="skill-tags">
+                            <span class="skill-tag">Raspberry Pi</span>
+                            <span class="skill-tag">Arduino</span>
                             <span class="skill-tag">Git</span>
-                            <span class="skill-tag">GitHub</span>
-                            <span class="skill-tag">Docker</span>
                             <span class="skill-tag">LangFuse</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
+        
         <section id="projects">
             <div class="container">
                 <div class="section-header">
@@ -1127,13 +1152,14 @@
                                 <div class="project-duration">2025.05 ~ 현재</div>
                             </div>
                             <p class="project-description">
-                                사내 ChatGPT 서비스 'Works+'의 Multi-Agent 개발 및 MCP Tool 연동을 담당하며, MS Azure AI, Copilot 기술 지원 및 사내 AI Usecase 강의를 수행합니다.
+                                사내 ChatGPT 서비스 'Works+'의 Multi-Agent 개발 및 MCP Tool 연동을 담당하며, MS Azure AI, Copilot 기술 지원 및 RAG/Agent 기반 AI Usecase 강의를 수행합니다.
                             </p>
                             <div class="project-tags">
                                 <span class="project-tag">Multi-Agent</span>
                                 <span class="project-tag">Azure AI</span>
                                 <span class="project-tag">Copilot</span>
                                 <span class="project-tag">GenAI</span>
+                                <span class="project-tag">RAG</span>
                             </div>
                         </div>
                     </div>
@@ -1144,7 +1170,7 @@
                                 <div class="project-duration">2024.11 ~ 2025.05</div>
                             </div>
                             <p class="project-description">
-                                대외 SI 프로젝트로 피처스토어 개발, RabbitMQ 기반 로깅 시스템, LLM 프롬프트 메타 관리 시스템 등 AI 플랫폼의 핵심 백엔드 모듈을 개발했습니다.
+                                대외 SI 프로젝트로 AI 플랫폼의 핵심 백엔드 모듈을 개발했습니다. 사용자 SDK, RabbitMQ 기반 API 로깅 시스템, Vertica 빅데이터를 활용한 피처스토어 및 메타 카탈로그, Spring 기반 LLM 프롬프트 관리 시스템 등을 구축했습니다.
                             </p>
                             <div class="project-tags">
                                 <span class="project-tag">Feature Store</span>
@@ -1158,17 +1184,18 @@
                     <div class="project-card">
                         <div class="project-content">
                             <div class="project-header">
-                                <h3>카카오임팩트 쉬운말 번역 AI</h3>
+                                <h3>쉬운말 번역 AI (카카오임팩트)</h3>
                                 <div class="project-duration">2024.10 ~ 2025.03</div>
                             </div>
                             <p class="project-description">
-                                발달장애인의 원활한 소통을 돕기 위한 쉬운 말 번역 서비스. LLM RAG 파이프라인을 구축하고 FastAPI 기반의 백엔드 서버 개발 및 API 연동을 담당했습니다.
+                                발달장애인의 원활한 소통을 위한 'B-Peach LAB' 프로젝트. LLM RAG 파이프라인을 구축하고, FastAPI 백엔드 서버 개발 및 LangFuse를 활용한 가시성 추적 시스템을 구현했습니다.
                             </p>
                             <div class="project-tags">
                                 <span class="project-tag">LLM</span>
                                 <span class="project-tag">RAG</span>
                                 <span class="project-tag">FastAPI</span>
                                 <span class="project-tag">LangFuse</span>
+                                <span class="project-tag">Social Impact</span>
                             </div>
                         </div>
                     </div>
@@ -1179,13 +1206,13 @@
                                 <div class="project-duration">2024.06 ~ 2024.08</div>
                             </div>
                             <p class="project-description">
-                                객체 탐지 및 이미지 분류 모델을 활용하여 중고폰의 외관 상태를 분석하고 등급을 자동으로 판별하는 AI 파이프라인을 개발, 모델링을 주도하여 성공적으로 수주했습니다.
+                                객체 탐지 및 이미지 분류 모델을 활용하여 중고폰의 외관 상태를 분석하고 등급을 자동으로 판별하는 AI 파이프라인을 개발했습니다. 모델링을 주도하여 성공적으로 수주했으며, 사내 우수 Use-Case로 발표되었습니다.
                             </p>
                             <div class="project-tags">
                                 <span class="project-tag">VisionAI</span>
                                 <span class="project-tag">Object Detection</span>
                                 <span class="project-tag">Classification</span>
-                                <span class="project-tag">OpenCV</span>
+                                <span class="project-tag">PoC</span>
                             </div>
                         </div>
                     </div>
@@ -1196,13 +1223,14 @@
                                 <div class="project-duration">2023.05 ~ 2023.11</div>
                             </div>
                             <p class="project-description">
-                                사내 기술 포럼의 질문에 자동으로 답변하는 챗봇 개발. LangChain을 활용한 RAG 파이프라인 구축 및 Llama2 등 오픈소스 LLM을 Fine-tuning하여 응답 정확도를 40% 개선했습니다.
+                                사내 기술 포럼의 질문에 자동 답변하는 챗봇을 개발했습니다. LangChain을 활용한 RAG 파이프라인을 구축하고 Llama2 등 오픈소스 LLM을 Fine-tuning하여 응답 정확도를 40% 개선했습니다.
                             </p>
                             <div class="project-tags">
                                 <span class="project-tag">Fine-tuning</span>
                                 <span class="project-tag">RAG</span>
                                 <span class="project-tag">LangChain</span>
                                 <span class="project-tag">Llama2</span>
+                                <span class="project-tag">Chatbot</span>
                             </div>
                         </div>
                     </div>
@@ -1213,7 +1241,7 @@
                                 <div class="project-duration">2024.04 ~ 현재</div>
                             </div>
                             <p class="project-description">
-                                네이버 커넥트재단, 모두의연구소 등에서 AI 엔지니어 양성 과정의 멘토 및 코칭 스터디 코치로 활동하며, 머신러닝/딥러닝 지식과 실무 경험을 공유하고 있습니다.
+                                네이버 커넥트재단, 모두의연구소 등에서 AI 엔지니어 양성 과정의 멘토 및 코칭 스터디 코치로 활동하며, 머신러닝/딥러닝 지식과 실무 경험을 공유하고 있습니다. 성균관대 캡스톤 프로젝트 멘토링을 통해 팀의 3위 수상을 지원했습니다.
                             </p>
                             <div class="project-tags">
                                 <span class="project-tag">Mentoring</span>
@@ -1284,56 +1312,72 @@
                         <ul class="award-list">
                             <li class="award-item">
                                 <strong>Dacon 멀티모달 이미지 기반 Q&A</strong>
-                                <span>2위 (WINNER)</span>
+                                <span>우승 (2023.07)</span>
+                            </li>
+                            <li class="award-item">
+                                <strong>Kaggle 차량 차종 분류 대회</strong>
+                                <span>우승 (2023.03)</span>
+                            </li>
+                             <li class="award-item">
+                                <strong>네이버 HyperCLovaX 서비스 개발</strong>
+                                <span>2위 (2024.07)</span>
+                            </li>
+                            <li class="award-item">
+                                <strong>포텐데이 X 하이퍼클로바 해커톤</strong>
+                                <span>3위 (2024.08)</span>
                             </li>
                             <li class="award-item">
                                 <strong>Kaggle Player Contact Detection</strong>
-                                <span>Bronze Medal</span>
+                                <span>Bronze Medal (2023.03)</span>
                             </li>
                             <li class="award-item">
                                 <strong>Dacon Challenger 등급 달성</strong>
-                                <span>상위 0.1%</span>
+                                <span>상위 0.1% (2023.12)</span>
                             </li>
                             <li class="award-item">
-                                <strong>하이퍼클로바X AI 막차타기 스터디</strong>
-                                <span>2등</span>
+                                <strong>KT ds 사내 아이디어톤 'ktdos!'</strong>
+                                <span>아이디어상 (본선) (2024.11)</span>
                             </li>
-                            <li class="award-item">
-                                <strong>딥러닝 부트캠프 4기</strong>
-                                <span>자연어처리 우수교육생/프로젝트</span>
-                            </li>
-                            <li class="award-item">
-                                <strong>위즈네트 사내 해커톤</strong>
-                                <span>11개월 연속 수상</span>
+                             <li class="award-item">
+                                <strong>네이버 클라우드 이달의 NClouder</strong>
+                                <span>7월 선정 (2024.07)</span>
                             </li>
                         </ul>
                     </div>
                     <div class="award-category">
                         <h3>🚀 Activities</h3>
                         <ul class="award-list">
-                            <li class="award-item">
-                                <strong>NAVER Connect</strong>
-                                <span>부스트클래스 AI 엔지니어 멘토</span>
+                             <li class="award-item">
+                                <strong>가짜연구소 10기 - Agent is all you need</strong>
+                                <span>빌더(리더)</span>
                             </li>
                             <li class="award-item">
-                                <strong>모두의연구소 x NAVER</strong>
-                                <span>코칭스터디 코치</span>
+                                <strong>NAVER Connect 부스트클래스 2기</strong>
+                                <span>AI 엔지니어 전담 멘토 (2024.04 ~ 06)</span>
+                            </li>
+                             <li class="award-item">
+                                <strong>모두의연구소 x NAVER 코칭스터디</strong>
+                                <span>GenAI / Data Science 코치</span>
+                            </li>
+                            <li class="award-item">
+                                <strong>모두의연구소 '풀잎스쿨'</strong>
+                                <span>LangChain / Advanced RAG 스터디 리더</span>
                             </li>
                             <li class="award-item">
                                 <strong>NAVER AI Boost Study</strong>
-                                <span>9기 부스터, 10기/13기 리더</span>
+                                <span>9기~14기 부스터/리더 참여</span>
                             </li>
                             <li class="award-item">
-                                <strong>가짜연구소 8기 '랭체인쇼맨'</strong>
-                                <span>러너</span>
+                                <strong>오픈소스 컨트리뷰션 2024 - OSSCA</strong>
+                                <span>PyTorch 한국어 문서 번역 기여</span>
                             </li>
                             <li class="award-item">
-                                <strong>모두연 '풀잎스쿨' LangChain</strong>
-                                <span>스터디 리더</span>
+                                <strong>카카오임팩트 테크포임팩트 B-PeachLAB</strong>
+                                <span>AI 엔지니어 참여</span>
                             </li>
-                            <li class="award-item">
-                                <strong>정보시스템 보안 엔지니어 양성</strong>
-                                <span>KGITBank 수료</span>
+                             <li class="award-item">
+                                <strong>위즈네트 사내 해커톤</strong>
+                                <span>11개월 연속 수상</span>
                             </li>
                         </ul>
                     </div>
@@ -1386,8 +1430,8 @@
     <script>
         // Scroll Progress Indicator
         function updateScrollProgress() {
-            const scrollTop = window.pageYOffset;
-            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrollPercent = (scrollTop / docHeight) * 100;
             document.querySelector('.scroll-progress').style.width = scrollPercent + '%';
         }
@@ -1395,7 +1439,7 @@
         // Header Scroll Effect
         function handleHeaderScroll() {
             const header = document.querySelector('header');
-            if (window.scrollY > 100) {
+            if (window.scrollY > 50) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
@@ -1406,41 +1450,36 @@
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
 
-        hamburger.addEventListener('click', () => {
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
             hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
 
-        // Close mobile menu when clicking on links
+        // Close mobile menu when clicking on links or outside
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
                 navLinks.classList.remove('active');
             });
         });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+        
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                 hamburger.classList.remove('active');
+                 navLinks.classList.remove('active');
+            }
         });
+
 
         // Intersection Observer for animations
         const observerOptions = {
             root: null,
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
@@ -1454,62 +1493,34 @@
             observer.observe(section);
         });
 
-        // Parallax effect for hero section
-        function handleParallax() {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-        }
-
         // Event listeners
         window.addEventListener('scroll', () => {
             updateScrollProgress();
             handleHeaderScroll();
-            handleParallax();
         });
 
-        // Initialize
+        // Initialize on DOMContentLoaded
         document.addEventListener('DOMContentLoaded', () => {
+            // Set initial states
             updateScrollProgress();
             handleHeaderScroll();
-        });
 
-        // Add stagger animation to cards
-        function addStaggerAnimation() {
-            const cards = document.querySelectorAll('.skill-card, .project-card, .award-item');
-            cards.forEach((card, index) => {
-                card.style.animationDelay = `${index * 0.1}s`;
+            // Stagger animations for elements that might already be visible
+            const initiallyVisible = document.querySelectorAll('.skill-card, .project-card, .award-item, .timeline-item');
+            const initialObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.transitionDelay = `${index * 100}ms`;
+                        observer.unobserve(entry.target);
+                    }
+                });
             });
-        }
-
-        addStaggerAnimation();
-
-        // Typing effect for hero title (optional enhancement)
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.innerHTML = '';
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
-
-        // Enhanced hover effects
-        document.querySelectorAll('.project-card, .skill-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-8px) scale(1.02)';
-            });
+            initiallyVisible.forEach(el => initialObserver.observe(el));
             
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
+            // Activate hero animations
+            document.querySelector('.hero').classList.add('visible');
         });
+
     </script>
 </body>
 </html>
