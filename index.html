@@ -3,173 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>김재현 - AI Engineer Portfolio</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>AI Engineer - 김재현</title>
+    <meta name="description" content="사람과 기술을 연결하여 선한 영향력을 만드는 AI 서비스 엔지니어 김재현입니다.">
+    <meta property="og:title" content="AI Service Engineer - 김재현">
+    <meta property="og:description" content="사람과 기술을 연결하여 선한 영향력을 만드는 AI 엔지니어 김재현입니다.">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <style>
+        :root {
+            --bg-color: #121212;
+            --surface-color: #1e1e1e;
+            --primary-color: #00aaff;
+            --text-color: #e0e0e0;
+            --subtext-color: #a0a0a0;
+            --border-color: #333;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 2rem;
         }
 
-        /* Header & Navigation */
-        .header {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+        header {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
+            padding: 1rem 0;
             z-index: 1000;
-            transition: all 0.3s ease;
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .nav {
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
         .logo {
             font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .logo a {
+            text-decoration: none;
+            color: inherit;
         }
 
         .nav-links {
-            display: flex;
             list-style: none;
-            gap: 2rem;
+            display: flex;
+            gap: 1.5rem;
         }
 
         .nav-links a {
-            color: white;
+            color: var(--text-color);
             text-decoration: none;
+            font-weight: 500;
             transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: #ffd700;
+            color: var(--primary-color);
         }
 
-        /* Hero Section */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px;
+            background-color: var(--text-color);
+            transition: all 0.3s ease-in-out;
+        }
+
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
-            position: relative;
+            padding-top: 60px; /* Header height */
+        }
+        
+        .hero-content {
+            max-width: 800px;
         }
 
-        .hero-content h1 {
+        .hero h1 {
             font-size: 3.5rem;
+            font-weight: 800;
             margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
+            line-height: 1.2;
         }
 
-        .hero-content p {
-            font-size: 1.5rem;
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--subtext-color);
             margin-bottom: 2rem;
-            animation: fadeInUp 1s ease 0.2s both;
         }
 
-        .hero-content .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.8;
-            margin-bottom: 3rem;
-            animation: fadeInUp 1s ease 0.4s both;
+        .hero-socials a {
+            color: var(--subtext-color);
+            font-size: 1.8rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .hero-socials a:hover {
+            color: var(--primary-color);
         }
 
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #ffd700, #ffed4e);
-            color: #333;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: transform 0.3s ease;
-            animation: fadeInUp 1s ease 0.6s both;
+        section {
+            padding: 6rem 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .section:nth-child(even) {
-            background: #f8f9fa;
+        
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .section-title {
             text-align: center;
             font-size: 2.5rem;
+            font-weight: 700;
             margin-bottom: 3rem;
-            color: #333;
             position: relative;
         }
 
         .section-title::after {
             content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
         }
 
         /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
+        #about .about-content {
+            display: flex;
             gap: 3rem;
             align-items: center;
         }
 
-        .about-image {
-            text-align: center;
+        #about .about-text p {
+            margin-bottom: 1rem;
+            color: var(--subtext-color);
         }
 
-        .profile-image {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            font-size: 4rem;
-            color: white;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            line-height: 1.8;
+        #about .about-text strong {
+            color: var(--text-color);
+            font-weight: 600;
         }
 
         /* Skills Section */
@@ -180,37 +203,39 @@
         }
 
         .skill-category {
-            background: white;
+            background-color: var(--surface-color);
             padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .skill-category:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 170, 255, 0.1);
         }
 
         .skill-category h3 {
-            color: #667eea;
+            color: var(--primary-color);
             margin-bottom: 1rem;
-            font-size: 1.3rem;
+            font-weight: 600;
         }
 
-        .skill-tags {
+        .skill-category ul {
+            list-style: none;
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
         }
 
-        .skill-tag {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
+        .skill-category li {
+            background-color: #333;
+            color: var(--text-color);
             padding: 0.5rem 1rem;
             border-radius: 20px;
             font-size: 0.9rem;
         }
-
+        
         /* Projects Section */
         .projects-grid {
             display: grid;
@@ -219,472 +244,577 @@
         }
 
         .project-card {
-            background: white;
-            border-radius: 15px;
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
+        
         .project-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
-
-        .project-header {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 1.5rem;
-        }
-
+        
         .project-content {
             padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
-        .project-period {
-            font-size: 0.9rem;
-            opacity: 0.8;
+        .project-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
             margin-bottom: 0.5rem;
         }
 
-        /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            text-align: center;
+        .project-card .project-duration {
+            font-size: 0.9rem;
+            color: var(--subtext-color);
+            margin-bottom: 1rem;
         }
-
-        .contact-item {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .contact-item i {
-            font-size: 2rem;
-            color: #667eea;
+        
+        .project-card .project-role {
+            font-weight: 700;
+            color: var(--text-color);
+            background-color: rgba(0, 170, 255, 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            display: inline-block;
             margin-bottom: 1rem;
         }
 
+        .project-card p {
+            color: var(--subtext-color);
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+        
+        .project-tags {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-tags span {
+            background-color: #333;
+            font-size: 0.8rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--border-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--bg-color);
+            border: 4px solid var(--primary-color);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            position: relative;
+            border-radius: 8px;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            text-align: right;
+        }
+
+        .timeline-content h3 {
+            color: var(--primary-color);
+        }
+
+        .timeline-content .timeline-duration {
+            font-size: 0.9rem;
+            color: var(--subtext-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-content p {
+            font-weight: 600;
+        }
+
+        /* Awards & Activities */
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .award-list ul, .activity-list ul {
+            list-style: none;
+        }
+        
+        .award-list li, .activity-list li {
+            background-color: var(--surface-color);
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .award-list li:hover, .activity-list li:hover {
+            transform: translateX(5px);
+        }
+
+        .award-list h3, .activity-list h3 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+        
+        .award-list strong {
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .award-list span {
+            color: var(--subtext-color);
+            font-size: 0.9rem;
+        }
+
+
+        /* Contact Section */
+        #contact {
+            text-align: center;
+        }
+        
+        #contact p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: var(--subtext-color);
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        .contact-item i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
         .contact-item a {
-            color: #333;
+            color: var(--text-color);
             text-decoration: none;
         }
 
-        .contact-item a:hover {
-            color: #667eea;
-        }
-
-        /* Awards Section */
-        .awards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .award-item {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-left: 4px solid #ffd700;
+        .contact-item:hover a {
+             color: var(--primary-color);
         }
 
         /* Footer */
-        .footer {
-            background: #333;
-            color: white;
+        footer {
             text-align: center;
             padding: 2rem 0;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--subtext-color);
         }
 
         /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 3rem; }
+            .hero p { font-size: 1.1rem; }
+            .two-column-layout { grid-template-columns: 1fr; }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
-                display: none;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--surface-color);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.5s ease-in-out;
             }
+            .nav-links.active {
+                right: 0;
+            }
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+            .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+            
+            .hero h1 { font-size: 2.5rem; }
 
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-content p {
-                font-size: 1.2rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .section {
-                padding: 60px 0;
-            }
+            .timeline::after { left: 30px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-item:nth-child(even) { left: 0; }
+            .timeline-item::after { left: 15px; }
+            .timeline-item:nth-child(odd) .timeline-content { text-align: left; }
         }
 
-        .scroll-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1000;
-        }
-
-        .scroll-to-top.visible {
-            opacity: 1;
+        @media (max-width: 576px) {
+            .container { padding: 0 1rem; }
+            nav { padding: 0 1rem; }
+            .projects-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav container">
-            <div class="logo">김재현</div>
-            <ul class="nav-links">
-                <li><a href="#home">홈</a></li>
-                <li><a href="#about">소개</a></li>
-                <li><a href="#skills">기술스택</a></li>
-                <li><a href="#projects">프로젝트</a></li>
-                <li><a href="#awards">수상경력</a></li>
-                <li><a href="#contact">연락처</a></li>
-            </ul>
-        </nav>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo"><a href="#">JINHYUN.K</a></div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>김재현</h1>
-            <p>AI Service Engineer</p>
-            <div class="subtitle">새로운 기술로 세상을 변화시키는 AI 서비스 엔지니어</div>
-            <a href="#about" class="cta-button">더 알아보기</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">소개</h2>
-            <div class="about-content">
-                <div class="about-image">
-                    <div class="profile-image">
-                        <i class="fas fa-user"></i>
-                    </div>
-                </div>
-                <div class="about-text">
-                    <p>안녕하세요! 저는 AI 분야에서 활동하는 엔지니어 김재현입니다. 어릴 적부터 손이 가만히 있지 못한다는 소리를 들으며 자란 저는, 무언가를 만드는 즐거움으로 성장했습니다.</p>
-                    <p>AI 분야에 입문하면서 제가 만든 것이 온전히 제 소유가 아니라 공유하고 다른 사람의 생각과 연결하여 새로운 창작물을 만들어내는 것에 매력을 느꼈습니다. 평소 giver의 성격으로 주변 사람들이 행복해지는 것이 저의 진짜 행복이라고 생각합니다.</p>
-                    <p>현재 KT DS에서 SW Engineer로 근무하며, 다양한 AI/ML 프로젝트와 LLM 개발에 참여하고 있습니다. 새로운 도전을 좋아하며, 작곡, 공예, 조향 등 다양한 취미생활을 통해 창의적인 아이디어를 발견하고 있습니다.</p>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>AI Engineer <span>김재현</span></h1>
+                <p>사람과 기술을 연결하여 선한 영향력을 만드는 AI 엔지니어입니다.<br>
+                   오픈소스 정신을 바탕으로 더 나은 세상을 위한 솔루션을 개발합니다.</p>
+                <div class="hero-socials">
+                    <a href="https://github.com/jh941213" target="_blank" title="Github"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/kjh941213/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://velog.io/@jh1213" target="_blank" title="Velog"><i class="fa-solid fa-blog"></i></a>
+                    <a href="mailto:hyun030508@icloud.com" title="Email"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section">
         <div class="container">
-            <h2 class="section-title">기술 스택</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3><i class="fas fa-brain"></i> Artificial Intelligence</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">PyTorch</span>
-                        <span class="skill-tag">Keras</span>
-                        <span class="skill-tag">TensorFlow</span>
-                        <span class="skill-tag">NumPy</span>
-                        <span class="skill-tag">Pandas</span>
-                        <span class="skill-tag">OpenCV</span>
-                        <span class="skill-tag">Scikit-learn</span>
-                        <span class="skill-tag">HuggingFace</span>
+            <section id="about">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>
+                            어릴 적부터 무언가를 만드는 즐거움 속에서 성장했습니다. 손을 끊임없이 움직이며 새로운 것을 창조하는 일에 매료되었고, 자연스럽게 AI 엔지니어의 길로 들어섰습니다. 제가 만든 기술이 단순히 제 소유가 아닌, <strong>모두와 공유되고 연결되어 더 큰 가치를 창출</strong>할 때 가장 큰 보람을 느낍니다.
+                        </p>
+                        <p>
+                            'Giver'의 성향을 바탕으로 주변 사람들의 행복이 곧 저의 행복이라는 믿음을 가지고 있습니다. 리눅스를 만든 리누스 토르발스처럼, 제가 가진 기술과 지식을 오픈소스로 공개하며 <strong>선한 영향력을 나누는 개발자</strong>가 되고 싶습니다.
+                        </p>
+                        <p>
+                            활발한 네트워킹을 통해 동료들과 배우고 성장하는 것을 즐기며, <strong>솔직하고 개방적인 소통</strong>이야말로 최고의 효율과 성과를 만든다고 믿습니다. 새로운 도전을 두려워하지 않으며, 작곡, 공예, 조향 등 다양한 취미를 통해 얻은 창의적인 영감을 기술에 녹여내고자 항상 노력합니다.
+                        </p>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">C</span>
-                        <span class="skill-tag">C++</span>
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">Swift</span>
-                        <span class="skill-tag">R</span>
-                        <span class="skill-tag">JavaScript</span>
+            </section>
+
+            <section id="skills">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Artificial Intelligence</h3>
+                        <ul>
+                            <li>Pytorch</li><li>Keras</li><li>Tensorflow</li><li>HuggingFace</li><li>Numpy</li><li>Pandas</li><li>Scikit-learn</li><li>OpenCV</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Programming Languages</h3>
+                        <ul>
+                            <li>Python</li><li>Java</li><li>C/C++</li><li>Swift</li><li>R</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Web & Backend</h3>
+                        <ul>
+                            <li>Flask</li><li>FastAPI</li><li>Streamlit</li><li>JavaScript</li><li>Spring</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Cloud & Database</h3>
+                        <ul>
+                            <li>AWS</li><li>Azure</li><li>MySQL</li><li>PostgreSQL</li><li>RabbitMQ</li><li>Vertica</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Embedded System</h3>
+                        <ul>
+                            <li>Arduino</li><li>Raspberry Pi</li><li>TinyML</li>
+                        </ul>
+                    </div>
+                     <div class="skill-category">
+                        <h3>Collaboration & Tools</h3>
+                        <ul>
+                            <li>Git</li><li>GitHub</li><li>Docker</li><li>LangFuse</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-globe"></i> Web Development</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Flask</span>
-                        <span class="skill-tag">Streamlit</span>
-                        <span class="skill-tag">FastAPI</span>
-                        <span class="skill-tag">JavaScript</span>
+            </section>
+
+            <section id="projects">
+                <h2 class="section-title">Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>MS AI Tech 팀 (KTDS)</h3>
+                            <div class="project-duration">2025.05 ~ 현재</div>
+                            <p>사내 ChatGPT 서비스 'Works+'의 Multi-Agent 개발 및 MCP Tool 연동을 담당하며, MS Azure AI, Copilot 기술 지원 및 사내 AI Usecase 강의를 수행합니다.</p>
+                            <div class="project-tags">
+                                <span>Multi-Agent</span><span>Azure AI</span><span>Copilot</span><span>GenAI</span>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="project-card">
+                        <div class="project-content">
+                            <h3>신한은행 AI Studio (KTDS)</h3>
+                            <div class="project-duration">2024.11 ~ 2025.05</div>
+                            <p>대외 SI 프로젝트로 피처스토어 개발, RabbitMQ 기반 로깅 시스템, LLM 프롬프트 메타 관리 시스템 등 AI 플랫폼의 핵심 백엔드 모듈을 개발했습니다.</p>
+                            <div class="project-tags">
+                                <span>Feature Store</span><span>RabbitMQ</span><span>Vertica</span><span>Spring</span><span>SDK</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>카카오임팩트 쉬운말 번역 AI</h3>
+                            <div class="project-duration">2024.10 ~ 2025.03</div>
+                            <p>발달장애인의 원활한 소통을 돕기 위한 쉬운 말 번역 서비스. LLM RAG 파이프라인을 구축하고 FastAPI 기반의 백엔드 서버 개발 및 API 연동을 담당했습니다.</p>
+                            <div class="project-tags">
+                                <span>LLM</span><span>RAG</span><span>FastAPI</span><span>LangFuse</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>VisionAI 중고폰 등급 분석 PoC</h3>
+                            <div class="project-duration">2024.06 ~ 2024.08</div>
+                            <p>객체 탐지 및 이미지 분류 모델을 활용하여 중고폰의 외관 상태를 분석하고 등급을 자동으로 판별하는 AI 파이프라인을 개발, 모델링을 주도하여 성공적으로 수주했습니다.</p>
+                            <div class="project-tags">
+                                <span>VisionAI</span><span>Object Detection</span><span>Classification</span><span>OpenCV</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>LLM Forum Chatbot (위즈네트)</h3>
+                            <div class="project-duration">2023.05 ~ 2023.11</div>
+                            <p>사내 기술 포럼의 질문에 자동으로 답변하는 챗봇 개발. LangChain을 활용한 RAG 파이프라인 구축 및 Llama2 등 오픈소스 LLM을 Fine-tuning하여 응답 정확도를 40% 개선했습니다.</p>
+                            <div class="project-tags">
+                                <span>Fine-tuning</span><span>RAG</span><span>LangChain</span><span>Llama2</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>AI/ML 멘토링 및 코칭</h3>
+                            <div class="project-duration">2024.04 ~ 현재</div>
+                            <p>네이버 커넥트재단, 모두의연구소 등에서 AI 엔지니어 양성 과정의 멘토 및 코칭 스터디 코치로 활동하며, 머신러닝/딥러닝 지식과 실무 경험을 공유하고 있습니다.</p>
+                            <div class="project-tags">
+                                <span>Mentoring</span><span>Coaching</span><span>NAVER Connect</span><span>모두의연구소</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-cloud"></i> Cloud & Database</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">AWS</span>
-                        <span class="skill-tag">Azure</span>
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">PostgreSQL</span>
+            </section>
+
+            <section id="experience">
+                <h2 class="section-title">Career Path</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>KT ds</h3>
+                            <p>SW Engineer</p>
+                            <div class="timeline-duration">2024.05 ~ 현재</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>위즈네트</h3>
+                             <p>AI Engineer</p>
+                            <div class="timeline-duration">2023.05 ~ 2024.05</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                             <h3>BGF Retail</h3>
+                             <p>영업 판매 관리</p>
+                            <div class="timeline-duration">2021.08 ~ 2022.09</div>
+                        </div>
+                    </div>
+                     <div class="timeline-item">
+                        <div class="timeline-content">
+                             <h3>MBCgame Heroes</h3>
+                             <p>Online Trainee (Starcraft 1)</p>
+                            <div class="timeline-duration">2011</div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
+            
+            <section id="awards">
+                 <h2 class="section-title">Awards & Activities</h2>
+                 <div class="two-column-layout">
+                     <div class="award-list">
+                        <h3>🏆 Awards</h3>
+                        <ul>
+                            <li><strong>Dacon 멀티모달 이미지 기반 Q&A</strong> <span>- 2위 (WINNER)</span></li>
+                            <li><strong>Kaggle Player Contact Detection</strong> <span>- Bronze Medal</span></li>
+                            <li><strong>Dacon Challenger 등급 달성</strong> <span>- 상위 0.1%</span></li>
+                            <li><strong>하이퍼클로바X AI 막차타기 스터디</strong> <span>- 2등</span></li>
+                            <li><strong>딥러닝 부트캠프 4기</strong> <span>- 자연어처리 우수교육생/프로젝트</span></li>
+                            <li><strong>위즈네트 사내 해커톤</strong> <span>- 11개월 연속 수상</span></li>
+                        </ul>
+                     </div>
+                     <div class="activity-list">
+                         <h3>🚀 Activities</h3>
+                         <ul>
+                            <li><strong>NAVER Connect</strong> - 부스트클래스 AI 엔지니어 멘토</li>
+                            <li><strong>모두의연구소 x NAVER</strong> - 코칭스터디 코치</li>
+                             <li><strong>NAVER AI Boost Study</strong> - 9기 부스터, 10기/13기 리더</li>
+                            <li><strong>가짜연구소 8기 '랭체인쇼맨'</strong> - 러너</li>
+                            <li><strong>모두연 '풀잎스쿨' LangChain</strong> - 스터디 리더</li>
+                            <li><strong>정보시스템 보안 엔지니어 양성</strong> - KGITBank 수료</li>
+                         </ul>
+                     </div>
+                 </div>
+            </section>
+
+
+            <section id="contact">
+                <h2 class="section-title">Get In Touch</h2>
+                <p>
+                    새로운 기회와 협업을 언제나 환영합니다.<br>
+                    함께 성장하며 재미있는 프로젝트를 만들어 갈 분들의 연락을 기다립니다.
+                </p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:hyun030508@icloud.com">hyun030508@icloud.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:010-2920-4946">010-2920-4946</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <a href="https://github.com/jh941213" target="_blank">github.com/jh941213</a>
+                    </div>
+                </div>
+            </section>
         </div>
-    </section>
+    </main>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section">
+    <footer>
         <div class="container">
-            <h2 class="section-title">주요 프로젝트</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>MS AI Tech 팀 - KTDS</h3>
-                        <div class="project-period">2025.05 ~ 현재</div>
-                    </div>
-                    <div class="project-content">
-                        <p>사내 AI Usecase 소개 및 강의 (RAG, Agent)</p>
-                        <p>Works + 개발 담당 (사내 ChatGPT 서비스) Multi-Agent 개발, MCP tool 개발 및 연결</p>
-                        <p>MS Azure AI, AI Foundry, Copilot 기술 지원</p>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>신한은행 AI Studio</h3>
-                        <div class="project-period">2024.11 ~ 2025.05</div>
-                    </div>
-                    <div class="project-content">
-                        <p>대외 SI 프로젝트로 사용자 SDK 개발</p>
-                        <p>RabbitMQ 컨슈밍 및 API 로깅, Learning 메서드 업데이트 api 구축</p>
-                        <p>피처스토어 개발 및 LLM 프롬프트 메타관리 개발</p>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>카카오 임팩트 B-Peach LAB</h3>
-                        <div class="project-period">2024.10 ~ 2025.03</div>
-                    </div>
-                    <div class="project-content">
-                        <p>쉬운말 번역 AI 서비스</p>
-                        <p>LLM RAG 파이프라인 구축 / API 백엔드 연결</p>
-                        <p>FastAPI LLM 서버 구축 및 LangFuse를 활용한 가시성 추적 개발</p>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>VisionAI 중고폰 등급 분석</h3>
-                        <div class="project-period">2024.06 ~ 2024.08</div>
-                    </div>
-                    <div class="project-content">
-                        <p>KT M&S PoC 프로젝트</p>
-                        <p>객체탐지 및 이미지 분류를 활용한 등급 분석 파이프라인 개발</p>
-                        <p>사내 우수 Use-Case 발표 및 수주 확정</p>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>LLM 포럼 챗봇 개발</h3>
-                        <div class="project-period">2023.05 ~ 2023.11</div>
-                    </div>
-                    <div class="project-content">
-                        <p>위즈네트 포럼 응답 개선 프로젝트</p>
-                        <p>기존 포럼 응답 대비 40% 개선</p>
-                        <p>RAG Pipeline 구축 (LangChain) 및 LLM Fine-tuning</p>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>AIoT Platform</h3>
-                        <div class="project-period">2023.12 ~ 2024.05</div>
-                    </div>
-                    <div class="project-content">
-                        <p>SKTelecom OpenHouse 프로젝트</p>
-                        <p>AIoT를 결합한 LTE, 5G edge device에서의 AIOT 교육</p>
-                        <p>TinyML을 통한 경량화작업 및 Raspberry PI, Arduino edge device 테스트</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Awards Section -->
-    <section id="awards" class="section">
-        <div class="container">
-            <h2 class="section-title">수상 경력</h2>
-            <div class="awards-grid">
-                <div class="award-item">
-                    <h3><i class="fas fa-trophy"></i> Dacon 멀티모달 이미지 기반질의 응답</h3>
-                    <p>2위 WINNER 수상</p>
-                </div>
-                <div class="award-item">
-                    <h3><i class="fas fa-medal"></i> Dacon Challenger 등급 달성</h3>
-                    <p>전국순위 22등 / 102,118명 중 상위 0.1%</p>
-                </div>
-                <div class="award-item">
-                    <h3><i class="fas fa-star"></i> Kaggle NFL Player Contact Detection</h3>
-                    <p>Bronze Medal 수상</p>
-                </div>
-                <div class="award-item">
-                    <h3><i class="fas fa-award"></i> 딥러닝 부트캠프</h3>
-                    <p>우수교육생 및 우수프로젝트 수상</p>
-                </div>
-                <div class="award-item">
-                    <h3><i class="fas fa-crown"></i> 네이버 A.I 부스트 스터디</h3>
-                    <p>9기 미션왕 팀 (ryan 05팀) 수상</p>
-                </div>
-                <div class="award-item">
-                    <h3><i class="fas fa-gem"></i> 성균관대 캡스톤 프로젝트</h3>
-                    <p>대한상공회의소 - 3위 수상</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title">연락처</h2>
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <h3>전화번호</h3>
-                    <a href="tel:010-2920-4946">010-2920-4946</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <h3>이메일</h3>
-                    <a href="mailto:hyun030508@icloud.com">hyun030508@icloud.com</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-github"></i>
-                    <h3>GitHub</h3>
-                    <a href="https://github.com/jh941213" target="_blank">github.com/jh941213</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-linkedin"></i>
-                    <h3>LinkedIn</h3>
-                    <a href="https://www.linkedin.com/in/kjh941213/" target="_blank">LinkedIn 프로필</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-blog"></i>
-                    <h3>블로그 (Velog)</h3>
-                    <a href="https://velog.io/@jh1213" target="_blank">velog.io/@jh1213</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-blog"></i>
-                    <h3>블로그 (티스토리)</h3>
-                    <a href="https://hyun941213.tistory.com/" target="_blank">hyun941213.tistory.com</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 김재현. All rights reserved.</p>
+            <p>&copy; 2025 Jinhyeon Kim. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
-    <div class="scroll-to-top" id="scrollToTop">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+        // Hamburger Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
             });
         });
 
-        // Header background change on scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            const scrollToTop = document.getElementById('scrollToTop');
-            
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-                scrollToTop.classList.add('visible');
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.1)';
-                header.style.backdropFilter = 'blur(10px)';
-                scrollToTop.classList.remove('visible');
-            }
-        });
-
-        // Scroll to top functionality
-        document.getElementById('scrollToTop').addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Add animation to elements when they come into view
-        const observerOptions = {
+        // Scroll Animation
+        const sections = document.querySelectorAll('section');
+        const options = {
+            root: null,
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: "0px"
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                if (!entry.isIntersecting) {
+                    return;
                 }
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
             });
-        }, observerOptions);
+        }, options);
 
-        // Observe all skill categories, project cards, and award items
-        document.querySelectorAll('.skill-category, .project-card, .award-item, .contact-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
+        sections.forEach(section => {
+            observer.observe(section);
         });
+
     </script>
 </body>
 </html>
