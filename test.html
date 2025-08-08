@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>나의 이력서</title>
+  <style>
+    /* 기본 리셋 및 폰트 설정 */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      color: #333;
+      padding: 20px;
+    }
+
+    /* 컨테이너 */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* 헤더 */
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: #7f8c8d;
+    }
+
+    /* 섹션 스타일 */
+    section {
+      margin-bottom: 30px;
+    }
+
+    section h2 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 5px;
+      color: #34495e;
+    }
+
+    /* 개인 정보 */
+    .personal-info {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .avatar {
+      flex: 1 1 150px;
+      max-width: 150px;
+      margin-right: 20px;
+    }
+
+    .avatar img {
+      width: 100%;
+      border-radius: 50%;
+      border: 2px solid #3498db;
+    }
+
+    .name {
+      flex: 2 1 300px;
+    }
+
+    .name h1 {
+      font-size: 2em;
+      margin-bottom: 5px;
+      color: #2c3e50;
+    }
+
+    .contact {
+      margin-top: 10px;
+    }
+
+    /* 섹션 내용 리스트 */
+    .section-content ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .section-content li {
+      margin-bottom: 10px;
+    }
+
+    /* 기술 스킬 */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      background-color: #ecf0f1;
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-size: 0.95em;
+    }
+
+    /* 경험 및 학력 */
+    .item {
+      margin-bottom: 15px;
+    }
+
+    .item h3 {
+      font-size: 1.2em;
+      margin-bottom: 5px;
+      color: #2980b9;
+    }
+
+    .item p {
+      font-size: 1em;
+      color: #555;
+    }
+
+    /* 푸터 */
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #999;
+      margin-top: 40px;
+    }
+
+    /* 반응형 조정 */
+    @media(max-width: 600px) {
+      .personal-info {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .avatar {
+        margin-bottom: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 헤더 -->
+    <header>
+      <h1>홍길동</h1>
+      <p>웹 개발자 | 프론트엔드 & 백엔드</p>
+    </header>
+
+    <!-- 개인 정보 섹션 -->
+    <section class="personal-info">
+      <div class="avatar">
+        <img src="https://via.placeholder.com/150" alt="홍길동 사진" />
+      </div>
+      <div class="name">
+        <h1>홍길동</h1>
+        <div class="contact">
+          <p>이메일: example@example.com</p>
+          <p>전화번호: 010-1234-5678</p>
+          <p>주소: 서울특별시 강남구</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 기술 스킬 섹션 -->
+    <section>
+      <h2>기술 스킬</h2>
+      <div class="skills section-content">
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">React</div>
+        <div class="skill">Node.js</div>
+        <div class="skill">Python</div>
+        <div class="skill">Django</div>
+      </div>
+    </section>
+
+    <!-- 경력 섹션 -->
+    <section>
+      <h2>경력</h2>
+      <div class="section-content">
+        <div class="item">
+          <h3>웹 개발자 - ABC 회사</h3>
+          <p>2020년 3월 - 현재</p>
+          <p>프론트엔드 및 백엔드 개발, 프로젝트 관리, 고객과의 커뮤니케이션 담당</p>
+        </div>
+        <div class="item">
+          <h3>인턴 - XYZ 스타트업</h3>
+          <p>2019년 6월 - 2019년 8월</p>
+          <p>웹사이트 유지보수 및 간단한 기능 개발</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 학력 섹션 -->
+    <section>
+      <h2>학력</h2>
+      <div class="section-content">
+        <div class="item">
+          <h3>서울대학교 컴퓨터공학과</h3>
+          <p>학사, 2015년 3월 - 2019년 2월</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 기타 섹션 (필요시 추가 가능) -->
+
+    <!-- 푸터 -->
+    <footer>
+      <p>&copy; 2024 홍길동. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>
